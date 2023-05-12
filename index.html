@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image to WebP Converter</title>
+	<link rel="stylesheet" type="text/css" href="/inc/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Image to WebP Converter</h1>
+	<section class="ts_maian_section">
+		<form id="convert_form" enctype="multipart/form-data" oninput="quality_result.value = quality.value">
+			<label for="image_file">Image File:</label>
+			<input type="file" id="image_file" name="image_file"><br>
+			<label for="quality">WebP Quality:</label>
+			<input type="range" id="quality" name="quality" min="1" max="100" value="80">
+			<output name="quality_result" for="quality">80</output><br>
+			<input type="submit" name="submit" value="Convert" class="ts_button">
+		</form>
+	</section>
+	<br>
+	<section class="maian_section">
+		<button id="clear_input" class="ts_button">Clear Input Images</button>
+		<button id="clear_output" class="ts_button">Clear Output Images</button>
+	</section>
+	
+	<section class="ts_result">
+		<div id="result"></div>
+	</section>
+
+	<script>
+		$(document).ready(function(){
+			$('#convert_form').on('submit', function(event){
+				event.preventDefault();
+				var formData = new FormData(this);
+				$.ajax({
+					url: 'convert.php',
+					type: 'POST',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function(response){
+						$('#result').html('<img src="' + response + '">');
+					}
+				});
+			});
+
+			$('#clear_input').on('click', function(event){
+				event.preventDefault();
+				$.ajax({
+					url: 'clear.php?type=input',
+					type: 'GET',
+					success: function(response){
+						alert(response);
+					}
+				});
+			});
+
+			$('#clear_output').on('click', function(event){
+				event.preventDefault();
+				$.ajax({
+					url: 'clear.php?type=output',
+					type: 'GET',
+					success: function(response){
+						alert(response);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
