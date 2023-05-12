@@ -21,7 +21,7 @@
 
       move_uploaded_file($source_image, 'input/' . $_FILES['image_file']['name'][$key]);
       
-      echo "<img src='".$output_image ."'>";
+      echo "<div class='output-image'><img src='".$output_image ."'><a class='download-btn' href='".$output_image."' download>Download</a></div>";
     }
   }
 ?>
