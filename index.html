@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+	<!-- This script is made with love by TiydoSoft (tiydosoft.tech) -->
 <head>
 	<title>Image to WebP Converter by TiydoSoft</title>
 	<link rel="stylesheet" type="text/css" href="/inc/css/style.css">
@@ -9,7 +10,7 @@
 <body>
 	<h1>Image to WebP Converter by TiydoSoft</h1>
 	<section class="ts_maian_section">
-		<form id="convert_form" enctype="multipart/form-data" oninput="quality_result.value = quality.value">
+		<form id="ts_convert_form" enctype="multipart/form-data" oninput="quality_result.value = quality.value">
 			<label for="image_file">Image File:</label>
 			<input type="file" id="image_file" name="image_file[]" multiple><br>
 			<label for="quality">WebP Quality:</label>
@@ -20,17 +21,18 @@
 	</section>
 	<br>
 	<section class="maian_section">
-		<button id="clear_input" class="ts_button">Clear Input Images</button>
+		<button id="ts_clear_input" class="ts_button">Clear Input Images</button>
 		<button id="clear_output" class="ts_button">Clear Output Images</button>
 	</section>
 	
 	<section class="ts_result">
-		<div id="result"></div>
+		<div id="ts_result"></div>
 	</section>
+	<!-- This script is made with love by TiydoSoft (tiydosoft.tech) -->
 
 	<script>
 		$(document).ready(function(){
-			$('#convert_form').on('submit', function(event){
+			$('#ts_convert_form').on('submit', function(event){
 				event.preventDefault();
 				var formData = new FormData(this);
 				$.ajax({
@@ -40,12 +42,12 @@
 					processData: false,
 					contentType: false,
 					success: function(response){
-						$('#result').html(response);
+						$('#ts_result').html(response);
 					}
 				});
 			});
 
-			$('#clear_input').on('click', function(event){
+			$('#ts_clear_input').on('click', function(event){
 				event.preventDefault();
 				$.ajax({
 					url: 'core/clear/?type=input',
@@ -68,5 +70,6 @@
 			});
 		});
 	</script>
+	<!-- This script is made with love by TiydoSoft (tiydosoft.tech) -->
 </body>
 </html>
