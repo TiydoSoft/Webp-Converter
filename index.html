@@ -34,7 +34,7 @@
 				event.preventDefault();
 				var formData = new FormData(this);
 				$.ajax({
-					url: 'convert.php',
+					url: 'core/convert/',
 					type: 'POST',
 					data: formData,
 					processData: false,
@@ -48,7 +48,7 @@
 			$('#clear_input').on('click', function(event){
 				event.preventDefault();
 				$.ajax({
-					url: 'clear.php?type=input',
+					url: 'core/clear/?type=input',
 					type: 'GET',
 					success: function(response){
 						alert(response);
@@ -59,7 +59,7 @@
 			$('#clear_output').on('click', function(event){
 				event.preventDefault();
 				$.ajax({
-					url: 'clear.php?type=output',
+					url: 'core/clear/?type=output',
 					type: 'GET',
 					success: function(response){
 						alert(response);

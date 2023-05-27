@@ -1,6 +1,6 @@
 <?php
-$dir_input = 'input';
-$dir_output = 'output';
+$dir_input = '../../input';
+$dir_output = '../../output';
 
 if ($_GET['type'] == 'input') {
   if (is_dir($dir_input)) {
